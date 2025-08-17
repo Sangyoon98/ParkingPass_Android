@@ -9,17 +9,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.sangyoon.parkingpass.model.Car
+import com.sangyoon.parkingpass.viewmodel.PassListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PassScreen(
     navController: NavController,
-    car: Car
+    viewModel: PassListViewModel,
+    carId: String
 ) {
+    LaunchedEffect(carId) {
+
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(

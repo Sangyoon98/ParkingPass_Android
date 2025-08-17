@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.sangyoon.parkingpass" />
+                  <option name="mobileSdkAppId" value="1:918603316509:android:73e090ba9b8cdccc95b5f4" />
+                  <option name="projectId" value="parkingpass-215ea" />
+                  <option name="projectNumber" value="918603316509" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

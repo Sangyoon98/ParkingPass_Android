@@ -5,4 +5,12 @@
     <string name="tab_pass">입출차기록</string>
     <string name="tab_car">등록차량관리</string>
     <string name="tab_setting">설정</string>
+
+    <!-- Floating Button -->
+    <string name="button_add">추가하기</string>
+
+    <!-- Dialog Screen -->
+    <string name="button_cancel">취소</string>
+    <string name="hint_input_plate_number">차량번호 입력</string>
+    <string name="error_empty">입력칸이 비어있습니다.</string>
 </resources>

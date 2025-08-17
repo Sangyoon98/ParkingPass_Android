@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "918603316509",
+    "project_id": "parkingpass-215ea",
+    "storage_bucket": "parkingpass-215ea.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918603316509:android:73e090ba9b8cdccc95b5f4",
+        "android_client_info": {
+          "package_name": "com.sangyoon.parkingpass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrF-jjnWnOcS_CnVyLQiVNDUTvwV6vMYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

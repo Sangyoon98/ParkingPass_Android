@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,81 +18,92 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.sangyoon.parkingpass.model.Car
+import com.sangyoon.parkingpass.viewmodel.PassListViewModel
 import java.time.LocalDateTime
 
-@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PassListScreen(
     navController: NavController,
-    onPassClick: (Int) -> Unit
+    viewModel: PassListViewModel,
+    onPassClick: (String) -> Unit
 ) {
-    val passList = listOf(
+    val passList by viewModel.passList.collectAsState()
+    /*val passList = listOf(
         Car(
-            id = 1,
-            number = "123가4568",
+            id = "1",
+            plateNumber = "123가4568",
             carType = "쏘나타",
             ownerName = "홍길동",
             ownerPhoneNumber = "010-1234-5678",
-            inDate = LocalDateTime.now(),
-            outDate = LocalDateTime.now()
-        ),
-        Car(
-            id = 1,
-            number = "47루4340",
-            carType = "벨로스터",
-            ownerName = "채상윤",
+            notes = "",
+            isActive = true,
+            createdAt = LocalDateTime.now(),
+            updatedAt = LocalDateTime.now()
+        ), Car(
+            id = "2",
+            plateNumber = "123가4569",
+            carType = "그랜저",
+            ownerName = "홍길동",
             ownerPhoneNumber = "010-1234-5678",
-            inDate = LocalDateTime.now(),
-            outDate = LocalDateTime.now()
-        ),
-        Car(
-            id = 1,
-            number = "02우1138",
+            notes = "",
+            isActive = true,
+            createdAt = LocalDateTime.now(),
+            updatedAt = LocalDateTime.now()
+        ), Car(
+            id = "3",
+            plateNumber = "123가4567",
             carType = "아반떼",
-            ownerName = "김이름",
+            ownerName = "홍길동",
             ownerPhoneNumber = "010-1234-5678",
-            inDate = LocalDateTime.now(),
-            outDate = LocalDateTime.now()
+            notes = "",
+            isActive = true,
+            createdAt = LocalDateTime.now(),
+            updatedAt = LocalDateTime.now()
         )
-    )
+    )*/
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "입출차기록") }
-            )
-        }
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(passList) { pass ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onPassClick(pass.id) }
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(16.dp)
+    ) {
+        items(passList) { pass ->
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onPassClick(pass.id) }
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp)
                 ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp)
-                    ) {
-                        Text(text = pass.number)
-                        Spacer(Modifier.height(16.dp))
-                        Text(text = pass.carType)
-                        Spacer(Modifier.height(16.dp))
-                        Text(text = pass.ownerName)
-                        Spacer(Modifier.height(16.dp))
-                        Text(text = pass.ownerPhoneNumber)
-                    }
+                    Text(text = pass.plateNumber)
+                    Spacer(Modifier.height(16.dp))
+                    Text(text = pass.direction.toString())
+                    Spacer(Modifier.height(16.dp))
+                    Text(text = pass.timestampMillis.toString())
                 }
             }
         }
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview
+@Composable
+fun PassListScreenPreview() {
+    PassListScreen(
+        navController = rememberNavController(),
+        viewModel = viewModel(),
+        onPassClick = {}
+    )
 }
